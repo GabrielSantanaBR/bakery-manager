@@ -1,24 +1,25 @@
-from excel_manager import load_excel
+from excel_manager import load_excel, validate_structure
 
-REQUIRED_SHEETS = [
-    "Produtos",
-    "Cafeteria 1",
-    "Cafeteria 2",
-    "Cafeteria 3",
-    "Resumo Mensal"
-]
 
-def main():
-
+def main() -> None:
     sheets = load_excel()
+    missing = validate_structure(sheets)
 
-    print("\nWorkbook loaded successfully!\n")
+    print("Pricing & Sales Manager — public demo")
+    print(f"Loaded {len(sheets)} worksheets.")
 
-    for sheet in REQUIRED_SHEETS:
-        if sheet in sheets:
-            print(f"✓ {sheet}")
-        else:
-            print(f"✗ Missing sheet: {sheet}")
+    if missing:
+        print("\nMissing required worksheets:")
+        for sheet in missing:
+            print(f"  - {sheet}")
+        raise SystemExit(1)
+
+    print("\nWorkbook structure: OK")
+    print("Available modules:")
+    for sheet in ("Ingredients", "Recipes", "Pricing", "Sales", "Dashboard"):
+        rows = len(sheets[sheet].dropna(how="all"))
+        print(f"  ✓ {sheet}: {rows} non-empty rows")
+
 
 if __name__ == "__main__":
     main()
