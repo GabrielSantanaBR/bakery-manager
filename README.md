@@ -34,6 +34,19 @@ O arquivo [`demo/small-business-pricing-manager-demo.xlsx`](demo/small-business-
 | Sales | Registro consolidado de vendas por canal |
 | Dashboard | KPIs e comparações comerciais |
 
+## Validação em Python
+
+O protótipo Python do repositório carrega a própria demo pública e verifica se a estrutura esperada está presente.
+
+```bash
+git clone https://github.com/GabrielSantanaBR/bakery-manager.git
+cd bakery-manager
+pip install -r requirements.txt
+python main.py
+```
+
+O comando valida as seis abas principais e mostra quantas linhas não vazias existem em cada módulo operacional.
+
 ## Competências demonstradas
 
 - Modelagem de dados em planilhas
@@ -43,11 +56,12 @@ O arquivo [`demo/small-business-pricing-manager-demo.xlsx`](demo/small-business-
 - Business intelligence para pequenos negócios
 - Criação de dashboards
 - Normalização de dados operacionais
+- Integração entre Excel e Python/Pandas
 - Transformação de uma necessidade real em ferramenta utilizável
 
 ## Evolução do projeto
 
-O repositório também contém experimentos em Python para explorar a migração gradual da lógica da planilha para uma aplicação. A planilha é, no momento, o artefato mais maduro do case; os módulos Python devem ser tratados como protótipo em evolução.
+A planilha é o artefato mais maduro do case. O código Python representa a etapa inicial de uma migração gradual da lógica operacional para uma aplicação, começando pela leitura e validação estruturada dos dados.
 
 ## Privacidade
 
